@@ -144,4 +144,54 @@
         <!--级联属性可以修改属性的属性 由于ref是引用关系，所以如果引用后更改值了，原对象也会被更改-->
         <property name="agentInfo.agentPort" value="1111111"/>
     </bean>
+
+    <!--======================================测试练习创建Bean==========================================-->
+    <!--parent 指定当前的Bean的配置信继承哪个 继承关系 当前Bean属性优先级高于父类的属性值-->
+    <bean id="gatewayInfo8" parent="gatewayInfo7">
+        <property name="gatewayId" value="22222222222222222222"/>
+    </bean>
+
+    <!--使用abstract创建Bean-->
+    <bean id="gatewayInfo9" class="com.example.entity.GatewayInfo" abstract="true">
+        <property name="gatewayId" value="330af121012k105j125j"/>
+        <!--ref 代表引用外部Bean实体类-->
+        <property name="agentInfo" ref="agentInfo"></property>
+        <!--级联属性可以修改属性的属性 由于ref是引用关系，所以如果引用后更改值了，原对象也会被更改-->
+        <property name="agentInfo.agentPort" value="1111111"/>
+    </bean>
+    <bean id="gatewayInfo10" parent="gatewayInfo9">
+        <property name="gatewayId" value="22222222222222222222"/>
+    </bean>
+
+    <!--Bean创建顺序-->
+    <bean id="gatewayInfo11" class="com.example.entity.GatewayInfo" depends-on="agentInfo">
+        <property name="gatewayId" value="330af121012k105222222"/>
+        <!--ref 代表引用外部Bean实体类-->
+        <property name="agentInfo" ref="agentInfo"></property>
+        <!--级联属性可以修改属性的属性 由于ref是引用关系，所以如果引用后更改值了，原对象也会被更改-->
+        <property name="agentInfo.agentPort" value="1111111"/>
+    </bean>
+
+    <!--测试Bean的作用域 分别创建单实例和多实例的Bean  ,
+    Bean的作用域指的是：Bean是否为单例  默认是：单例
+    使用属性scope=""
+    prototype: 多实例
+                1、容器启动默认不会创建多实例的Bean
+                2、获取Bean时，创建Bean
+                3、每次获取都会创建一个新的实例
+    singleton: 单实例 默认的：
+                1、在容器启动之前就已经创建好对象并保存在容器中
+                2、任何时候获取对象都是之前创建好的对象
+    request: 在WEB环境下，同一次请求创建一个Bean实例（没用）
+    session: 在WEB环境下，同一次会话创建一个Bean实例（没用）
+    -->
+    <bean id="gatewayInfo12" class="com.example.entity.GatewayInfo" scope="prototype">
+        <property name="gatewayId" value="330af121012k105222222"/>
+        <!--ref 代表引用外部Bean实体类-->
+        <property name="agentInfo" ref="agentInfo"></property>
+        <!--级联属性可以修改属性的属性 由于ref是引用关系，所以如果引用后更改值了，原对象也会被更改-->
+        <property name="agentInfo.agentPort" value="1111111"/>
+    </bean>
+
+
 </beans>
