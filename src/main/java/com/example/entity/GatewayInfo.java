@@ -26,10 +26,11 @@ public class GatewayInfo {
     private Properties properties;
 
     public GatewayInfo() {
-
+        System.out.println("开始创建对象....");
     }
 
     public GatewayInfo(String gatewayId, String gatewayName, String gatewayType, String flag, AgentInfo agentInfo, List<AgentInfo> agentInfoList, Map<String, AgentInfo> agentInfoMap, Properties properties) {
+        System.out.println("开始创建对象....");
         this.gatewayId = gatewayId;
         this.gatewayName = gatewayName;
         this.gatewayType = gatewayType;
