@@ -40,4 +40,12 @@ public class GatewayInfo {
         this.agentInfoMap = agentInfoMap;
         this.properties = properties;
     }
+
+    public void initGatewayInfoBean() {
+        System.out.println("初始化方法");
+    }
+
+    public void destoryGatewayInfoBean() {
+        System.out.println("销毁方法");
+    }
 }
