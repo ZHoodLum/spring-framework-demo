@@ -41,6 +41,10 @@ public class GatewayInfo {
         this.properties = properties;
     }
 
+    public GatewayInfo(AgentInfo agentInfo) {
+        this.agentInfo = agentInfo;
+    }
+
     public void initGatewayInfoBean() {
         System.out.println("初始化方法");
     }
